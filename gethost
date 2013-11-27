@@ -9,12 +9,18 @@
 # --------------------------------------------------------------------------------
 #
 
-# $ ./gethost
+# DEPENDENCIES
+NC=$( which nc )
+if [ -z "$NC" ]; then
+	echo "Please install nc."
+	exit
+fi
 
-# MY_LOCAL_IP=`ifconfig | grep 'inet:' | cut -d: -f2 | awk '{ print $1}' | grep -v "127.0.0.1"`
+# DECLARE
 MY_LOCAL_IP=`ifconfig | grep -Eo 'inet(:)?( addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'`
 BASE_IP_LAN=`echo "$MY_LOCAL_IP" | cut -d\. -f1,2,3`
 
+# FUNCTIONS
 portscan() {
 	echo -e "\nScanning common ports for ip: $IP_ADDR"
 	TIMED_OUT=`nc -v -w 1 -z -t $IP_ADDR 80 2>&1 | grep "timed out"`
@@ -34,8 +40,6 @@ date_time() {
 	DATE_TIME=`date`
 	echo -e "\n$DATE_TIME\n"
 }
-
-# date_time
 
 ttl_opsys() {
 	if [ "$TTL" != "" ]; then
@@ -65,6 +69,7 @@ ttl_opsys() {
 	fi
 }
 
+# MAIN
 echo -e "IP ADDRESS\tTTL\tOP SYS\t\tHOSTNAME"
 echo -e "----------\t---\t------\t\t--------"
 
