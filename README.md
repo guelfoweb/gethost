@@ -16,3 +16,17 @@ Found [4] host(s).
 Do you want to scan host ports? Press [y] to continue... 
 
 </pre>
+
+####Download
+<a href="https://github.com/guelfoweb/gethost/blob/master/gethost">Get source code</a>
+
+####Install
+<pre>
+# mv gethost /usr/bin/gethost
+# chmod +x /user/bin/gethost
+</pre>
+
+####Launch
+<pre>
+$ gethost
+</pre>
