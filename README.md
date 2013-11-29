@@ -30,3 +30,8 @@ Do you want to scan host ports? Press [y] to continue...
 <pre>
 $ gethost
 </pre>
+
+####Other
+This script is currently maintained by Gianni 'guelfoweb' Amato, who can be contacted at guelfoweb@gmail.com. Suggestions and criticism are welcome.
+
+Enjoy!
